@@ -80,6 +80,10 @@ The FireEdge server configuration file can be found in ``/etc/one/fireedge-serve
 +-------------------------------------------+--------------------------------+----------------------------------------------------+
 | ``debug_level``                           | ``2``                          | Log debug level                                    |
 +-------------------------------------------+--------------------------------+----------------------------------------------------+
+| ``truncate_max_length``                   | ``150``                        | Log message max length                             |
++-------------------------------------------+--------------------------------+----------------------------------------------------+
+| ``api_timeout``                           | ``45_000``                     | Global API timeout limit                           |
++-------------------------------------------+--------------------------------+----------------------------------------------------+
 | ``guacd/port``                            | ``4822``                       | Connection port of guacd server                    |
 +-------------------------------------------+--------------------------------+----------------------------------------------------+
 | ``guacd/host``                            | ``localhost``                  | Connection hostname/IP of guacd server             |
@@ -162,6 +166,41 @@ In HA environments, ``fireedge_key`` needs to be copied from the first leader to
 If you need to execute the FireEdge with SSL Certificate, in the following path: ``/usr/lib/one/fireedge`` you must create a folder called ``cert`` and inside it place the files ``cert.pem`` and ``key.pem``. After doing that you need to restart ``opennebula-fireedge``.
 
 .. _fireedge_configuration_for_sunstone:
+
+Tuning and Extending
+====================
+
+.. _fireedge_branding:
+
+Branding FireEdge
+-----------------
+
+You can add your logo to the login, main, favicon and loading screens by updating the ``logo:`` attribute as follows:
+
+- The login screen is defined in the ``/etc/one/fireedge/sunstone/sunstone-views.yaml``.
+- The logo of the main UI screen is defined for each view.
+
+The logo image must be copied to ``/usr/lib/one/fireedge/src/client/assets/images/logos``.
+
+The following example shows how you can change the logo to a generic linux one (included by default in all FireEdge installations):
+
+.. code-block:: yaml
+
+    ---
+    logo: linux.png
+
+    groups:
+        oneadmin:
+            - admin
+            - user
+    default:
+        - user
+
+.. note::
+
+   The logo can be updated without having to restart the FireEdge server!
+
+|fireedge_sunstone_linux_login_logo| |fireedge_sunstone_linux_drawer_logo|
 
 Configure Sunstone for VMRC and Guacamole
 --------------------------------------------------------------------------------
@@ -261,3 +300,8 @@ If another service is using the port, you can change FireEdge configuration (``/
 
 .. |oneprovision_dashboard| image:: /images/oneprovision_dashboard.png
 .. |fireedge_sunstone_dashboard| image:: /images/fireedge_sunstone_dashboard.png
+
+.. |fireedge_sunstone_linux_login_logo| image:: /images/fireedge_login_linux_logo.png
+   :width: 45%
+.. |fireedge_sunstone_linux_drawer_logo| image:: /images/fireedge_drawer_linux_logo.png
+   :width: 45%

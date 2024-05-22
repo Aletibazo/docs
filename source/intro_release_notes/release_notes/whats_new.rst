@@ -17,6 +17,7 @@ OpenNebula Core
 
 Storage & Backups
 ================================================================================
+- **In-place restore**: Users now have access to a streamlined operation for restoring VM disk backups directly onto existing VMs, eliminating the need of generating new images and VM templates. For further information, please refer to the :ref:`backup documentation <vm_backups_restore>`.
 
 FireEdge Sunstone
 ================================================================================
@@ -30,6 +31,7 @@ FireEdge Sunstone
 - Implemented OneFlow tabs in :ref:`FireEdge Sunstone <fireedge_sunstone>`.
 - Implemented Marketplace tab in :ref:`FireEdge Sunstone <fireedge_sunstone>`.
 - Implemented Virtual Router tabs in :ref:`FireEdge Sunstone <fireedge_sunstone>`.
+- Improve management of virtual machine templates solving minor issues, simplifying the way to manage alias and adding a new PCI tab to easily manage PCI devices in :ref:`FireEdge Sunstone <fireedge_sunstone>`.
 
 API and CLI
 ================================================================================
@@ -43,6 +45,7 @@ Features Backported to 6.8.x
 
 - For VMs with resched flag add ``HOST_ID`` to :ref:`External Scheduler API <external_scheduler>`.
 - Option to restore individual disk from backup Image see :ref:`Restoring Backups <vm_backups_restore>`.
+- Allow VM recover recreate in poweroff and suspended state, see :ref:`Recover from VM Failures <ftguide_virtual_machine_failures>`.
 
 Other Issues Solved
 ================================================================================
@@ -60,3 +63,4 @@ Also, the following issues have been solved in the FireEdge Sunstone Web UI:
 - `Fix VM action buttons respond to state updates <https://github.com/OpenNebula/one/issues/6384>`__.
 - `Fix table selection issue <https://github.com/OpenNebula/one/issues/6507>`__.
 - `Fix global API timeout configurability <https://github.com/OpenNebula/one/issues/6537>`__.
+- `Fix refresh table Host after create a new host <https://github.com/OpenNebula/one/issues/6451>`__.
